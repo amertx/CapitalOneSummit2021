@@ -25,6 +25,11 @@ button {
      width: 60%;
 }
 
+#currencySelection {
+  color: black;
+}
+
+
 
   body {
     font: 400 15px Lato, sans-serif;
@@ -235,7 +240,13 @@ button {
       <input name="arrival" type="date"  placeholder="Arrival Date MM-DD" data-date-inline-picker="true"><br>
       <input name="departureDestination" type="text"  size="50" placeholder="Departure Destination" ><br>
       <input name="arrivalDestination" type="text"  size="50" placeholder="Arrival Destination" ><br>
-      <input name="currency" type="text"  size="50" placeholder="Currency" ><br>
+      <label for="currency">Currency Selection: </label>
+      <select name="currency" id="currency"> Select
+        <p id="currencySelection">{% for i in currencies["Currencies"] %}
+          <option id="currencySelection" value="{{i['Code'], i['Symbol']}}">{{ i['Code'], i['Symbol']}}</option>
+        {% endfor %} </p>
+
+  </select>
 
         <button type="button" class="btn btn-danger">Enter</button>
 
@@ -261,10 +272,13 @@ button {
 <div id="about" class="container-fluid">
   <div class="row">
     <div class="col-sm-8">
-      <h2>About Company Page</h2><br>
-      <h4>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</h4><br>
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-      <br><button class="btn btn-default btn-lg">Get in Touch</button>
+      <h2>About Flight Searcher</h2>
+      <h4>A tool that enables you to find the cheapest, efficient flight routes and quotes available.</h4>
+      <p>We cater to a variety destinations and currency conversions that you may see below </p>
+      <h3>Currencies Showcased: </h3>
+      <div id="" style="overflow:scroll; height:400px; width:300px">{% for i in currencies["Currencies"] %}
+        <li>{{ i['Code'], i['Symbol']}}</li>
+      {% endfor %} </div>
     </div>
     <div class="col-sm-4">
       <span class="glyphicon glyphicon-signal logo"></span>
