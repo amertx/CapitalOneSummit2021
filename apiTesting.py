@@ -29,7 +29,12 @@ response = requests.request("GET", url, headers=headers)
 parsedResponse = response.json()
 
 quoteCounter=0
-for key in parsedResponse["Quotes"]:
+for key in parsedResponse['Quotes']:
+    quoteCounter+=1
     print(key["QuoteId"])
 
 print(quoteCounter, " total quotes found")
+
+print()
+
+print(response.text)

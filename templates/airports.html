@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,8 +12,6 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
   <style>
-
-
   form {
     display: inline-block;
 }
@@ -30,17 +29,14 @@ button {
 #currencySelection {
   color: black;
 }
-th{
-  text-align: center;
-  vertical-align: middle;
-}
 
-table tbody tr td {
-  font-size: 24px;
-  text-align: center;
-  vertical-align: middle;
+table {
+    border-spacing: 5px;
+    border-collapse: separate;
 }
-
+td {
+    padding: 10px;
+}
 
   body {
     font: 400 15px Lato, sans-serif;
@@ -236,107 +232,55 @@ table tbody tr td {
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav navbar-right">
         <li><a href="#about">ABOUT</a></li>
-        <li><a href="#currencies">CURRENCIES</a></li>
-        <li><a href="#airports">AIRPORTS</a></li>
-
+        <li><a href="/">CURRENCIES</a></li>
+        <li><a href="/">AIRPORTS</a></li>
         <li><a a target="_blank" rel="noopener noreferrer" href="https://github.com/amertx/CapitalOneSummit2021">GITHUB</a></li>
+
+
       </ul>
     </div>
   </div>
 </nav>
 
-<div class="jumbotron text-center">
-  <h1>Flight Searcher</h1>
-  <p><i>find the cheapest flights for your travel needs!<i/> </p>
-  <form action="/" method = "post" align ="middle">
-    <div class="input-group" align="middle">
-      <input name="departure" type="date" placeholder="Departure Date MM-DD" data-date-inline-picker="true"><br>
-      <input name="arrival" type="date"  placeholder="Arrival Date MM-DD" data-date-inline-picker="true"><br>
-      <input name="market" type="text" placeholder="Market For Travel" data-date-inline-picker="true"><br>
-      <input name="departureDestination" type="text"  size="50" placeholder="Departure Destination" ><br>
-      <input name="arrivalDestination" type="text"  size="50" placeholder="Arrival Destination" ><br>
-      <input name="currency" type="text" placeholder="ex. USD" ><br>
-
-        <button class="btn btn-default btn-lg" type="submit" value="Enter">Enter</button>
-
-
-
-    </div>
-
-  </form>
-</div>
-
 
 
 <!-- Container (About Section) -->
-<div id="about" class="container-fluid" align ="middle">
-  <div class="row">
-      <h2>About Flight Searcher</h2>
-      <h4>A tool that enables you to find the cheapest, efficient flight routes and quotes available.</h4>
-      <p>We cater to a variety destinations and currency conversions that you may see below </p>
+<div id="results" class="container-fluid" align = "middle">
+  <h1> Airports Found </h1>
+  <hr width=50%>
 
-      <span class="glyphicon glyphicon-signal logo"></span>
-  </div>
+         <h3>Based on your query, the following was found: </h3>
+
+         <table>
+
+         <div >
+
+           <td><h3>Aiport Name </h3></td>
+           <td><h3>Country Name </h3> </td>
+           <td><h3>Airport Code </h3></td>
+
+           {% for key in outputAirport['Places'] %}
+           <tr>
+           <td>{{ key["PlaceName"] }}</td>
+           <td>{{ key["CountryName"] }}</td>
+           <td>{{ key["PlaceId"] }}</td>
+          <br>
+          </tr>
+         {% endfor %}
+       </div>
+
+      </table>
+
+
+      <br><a href="/" class="btn btn-default btn-lg">Back to Search</a>
+
 </div>
 
+
+
+
+
 <hr width=50%>
-<!-- Container (Currecny Section) -->
-<div id="currencies" class="container-fluid" align ="middle">
-  <div class="row">
-      <h2>Currency Conversions</h2>
-      <p>Sroll below to find if your designated currency is accepted</p>
-      <div style="height:400px;width:500px;overflow:auto;">
-      <table bordercolor= "#2E8BC0" border ="5" width = "400" height = "150">
-        <tr >
-          <th>Code</th>
-          <th>Symbol</th>
-
-      </tr>
-    {% for i in currencies["Currencies"] %}
-        <tr>
-        <td>{{ i['Code']}} </td>
-        <td> {{i['Symbol']}}</td>
-      </tr>
-
-      {% endfor %}
-    </table>
-  </div>
-
-
-
-  </div>
-</div>
-<hr width=50%>
-
-<!-- Container (Airport Section) -->
-<div id="airports"  align ="middle">
-  <div class="row">
-      <h2>Airport Selections</h2>
-      <p>Sroll below to find explore airports at your designated destination</p>
-      <form action="{{ url_for('airportSelections') }}" method = "post" align ="middle">
-        <div class="input-group" align="middle">
-
-          <input name="queryDestination" type="text" placeholder="Destination Name " ><br>
-          <input name="countryAirport" type="text"  size="50" placeholder="Country Code" ><br>
-          <input name="currencyAirport" type="text"  size="50" placeholder="Currency" ><br>
-
-            <button class="btn btn-default btn-lg" type="submit" value="Enter">Enter</button>
-
-
-
-        </div>
-
-      </form>
-
-
-  </div>
-</div>
-<br>
-<hr width=50%>
-
-
-
-
 
 
 <footer class="container-fluid text-center">
