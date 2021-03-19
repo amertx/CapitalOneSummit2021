@@ -88,7 +88,6 @@ pydash==4.8.0
 Pygments==2.6.1
 pylint==2.4.4
 pyobjc==6.2.2
-pyobjc-core==6.2.2
 pyobjc-framework-Accounts==6.2.2
 pyobjc-framework-AddressBook==6.2.2
 pyobjc-framework-AdSupport==6.2.2
