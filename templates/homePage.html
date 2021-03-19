@@ -250,9 +250,8 @@ table tbody tr td {
   <p><i>find the cheapest flights for your travel needs!<i/> </p>
   <form action="/" method = "post" align ="middle">
     <div class="input-group" align="middle">
-      <input name="departure" type="date" placeholder="Departure Date MM-DD" data-date-inline-picker="true"><br>
-      <input name="arrival" type="date"  placeholder="Arrival Date MM-DD" data-date-inline-picker="true"><br>
-      <input name="market" type="text" placeholder="Market For Travel" data-date-inline-picker="true"><br>
+      <input name="departure" type="text" placeholder="Departure Date (yyyy-mm-dd or yyyy-mm )" ><br>
+      <input name="arrival" type="text"  placeholder="Arrival Date (yyyy-mm-dd or yyyy-mm)" ><br>
       <input name="departureDestination" type="text"  size="50" placeholder="Departure Destination" ><br>
       <input name="arrivalDestination" type="text"  size="50" placeholder="Arrival Destination" ><br>
       <input name="currency" type="text" placeholder="ex. USD" ><br>
@@ -284,6 +283,7 @@ table tbody tr td {
 <div id="currencies" class="container-fluid" align ="middle">
   <div class="row">
       <h2>Currency Conversions</h2>
+      <h5>(currency codes may cause irregularities when inputting due to api constraints)</h5>
       <p>Sroll below to find if your designated currency is accepted</p>
       <div style="height:400px;width:500px;overflow:auto;">
       <table bordercolor= "#2E8BC0" border ="5" width = "400" height = "150">
